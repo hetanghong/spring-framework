@@ -1,5 +1,5 @@
 /*
- * Copyright 2002-2020 the original author or authors.
+ * Copyright 2002-2021 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,7 +63,8 @@ import org.springframework.web.servlet.mvc.method.RequestMappingInfoHandlerMappi
  * {@link #setUseRegisteredSuffixPatternMatch(boolean) useRegisteredSuffixPatternMatch}
  * are deprecated in order to discourage use of path extensions for request
  * mapping and for content negotiation (with similar deprecations in
- * {@link ContentNegotiationManager}). For further context, please read issue
+ * {@link org.springframework.web.accept.ContentNegotiationManagerFactoryBean
+ * ContentNegotiationManagerFactoryBean}). For further context, please read issue
  * <a href="https://github.com/spring-projects/spring-framework/issues/24179">#24719</a>.
  *
  * @author Arjen Poutsma
@@ -455,7 +456,7 @@ public class RequestMappingHandlerMapping extends RequestMappingInfoHandlerMappi
 					"or an empty string (\"\"): current value is [" + allowCredentials + "]");
 		}
 
-		if (annotation.maxAge() >= 0 && config.getMaxAge() == null) {
+		if (annotation.maxAge() >= 0) {
 			config.setMaxAge(annotation.maxAge());
 		}
 	}
